@@ -7,9 +7,9 @@ interface ProjectsGridProps {
 
 export const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
   return (
-    <ul className="grid" role="list">
+    <ul className="grid">
       {projects.map((project) => (
-        <ProjectCard key={project.title} project={project} />
+        <ProjectCard key={project.id} project={project} />
       ))}
     </ul>
   );

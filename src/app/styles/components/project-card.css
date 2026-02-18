@@ -15,6 +15,11 @@
     box-shadow 200ms ease;
 }
 
+.cardDisabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 .card:hover {
   transform: translateY(-1px);
   border-color: color-mix(in oklab, var(--border) 55%, var(--accent));
@@ -24,6 +29,14 @@
 
 .card:active {
   transform: translateY(0);
+}
+
+.cardDisabled:hover,
+.cardDisabled:active {
+  transform: translateY(0);
+  border-color: var(--border);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
 }
 
 .card:focus-visible {
@@ -131,6 +144,10 @@
     display: none;
   }
 
+  .cardDisabled .cardCta {
+    display: inline;
+  }
+
   .card:hover .cardArrow {
     transform: translateX(2px);
     border-color: color-mix(in oklab, var(--border) 30%, var(--accent));
@@ -141,6 +158,17 @@
     color: color-mix(in oklab, var(--accent) 80%, var(--text));
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  .cardDisabled:hover .cardArrow {
+    transform: translateX(0);
+    border-color: color-mix(in oklab, var(--border) 70%, var(--accent));
+    background: transparent;
+  }
+
+  .cardDisabled:hover .cardTitle {
+    color: var(--text);
+    text-decoration: none;
   }
 }
 

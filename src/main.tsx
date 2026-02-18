@@ -5,10 +5,12 @@ import "./app/styles/index.css";
 
 const rootElement = document.getElementById("root");
 
-if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <App />
-    </StrictMode>,
-  );
+if (!rootElement) {
+  throw new Error("Missing #root element: app bootstrap cannot continue.");
 }
+
+createRoot(rootElement).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
