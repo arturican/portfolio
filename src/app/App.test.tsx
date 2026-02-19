@@ -11,7 +11,7 @@ describe("App", () => {
   it("renders the projects list", () => {
     render(<App />);
 
-    expect(screen.getByRole("heading", { name: /projects/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /@arturican/i })).toBeInTheDocument();
     expect(screen.getAllByRole("listitem")).toHaveLength(projects.length);
   });
 });

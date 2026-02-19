@@ -7,8 +7,9 @@ export const App = () => {
       <div className="container">
         <div className="header">
           <h1 id="title" className="title">
-            Projects
+            @arturican
           </h1>
+          <p className="subtitle">Welcome to my portfolio. Click any card to view the project.</p>
         </div>
 
         <section className="section" aria-label="Project links">
