@@ -14,6 +14,7 @@ export interface ProjectSeo {
   description: string;
   shareImagePath: string;
   canonicalPath: string;
+  sharePathAliases?: string[];
 }
 
 export const projects: Project[] = [
@@ -30,6 +31,7 @@ export const projects: Project[] = [
       description: "A React + TypeScript todo list app with a clean and focused UI.",
       shareImagePath: "/og-default.png",
       canonicalPath: "/projects/todolist",
+      sharePathAliases: ["/todolist"],
     },
   },
   {

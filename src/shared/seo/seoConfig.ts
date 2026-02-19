@@ -86,15 +86,17 @@ const toAbsoluteUrl = (siteUrl: string, pathOrUrl: string): string => {
 };
 
 const projectSeoByPath = new Map(
-  projects.map((project) => [
-    normalizePathname(project.seo.canonicalPath),
-    {
+  projects.flatMap((project) => {
+    const baseMeta = {
       title: project.seo.title,
       description: project.seo.description,
       canonicalPath: project.seo.canonicalPath,
       shareImagePath: project.seo.shareImagePath,
-    } satisfies BaseSeoMeta,
-  ]),
+    } satisfies BaseSeoMeta;
+    const routePaths = [project.seo.canonicalPath, ...(project.seo.sharePathAliases ?? [])];
+
+    return routePaths.map((routePath) => [normalizePathname(routePath), baseMeta] as const);
+  }),
 );
 
 const getBaseSeoByPathname = (pathname: string): { seo: BaseSeoMeta; isKnownRoute: boolean } => {
@@ -145,7 +147,13 @@ export const resolveSeoMeta = (pathname: string, siteUrl?: string): SeoMeta => {
 };
 
 export const getPrerenderSeoPaths = (): string[] => {
-  const paths = [HOME_SEO.canonicalPath, ...projects.map((project) => project.seo.canonicalPath)];
+  const paths = [
+    HOME_SEO.canonicalPath,
+    ...projects.flatMap((project) => [
+      project.seo.canonicalPath,
+      ...(project.seo.sharePathAliases ?? []),
+    ]),
+  ];
 
   return [...new Set(paths.map((path) => normalizePathname(path)))];
 };

@@ -28,5 +28,6 @@ describe("seoConfig", () => {
 
     expect(paths).toContain("/");
     expect(paths).toContain("/projects/todolist");
+    expect(paths).toContain("/todolist");
   });
 });
