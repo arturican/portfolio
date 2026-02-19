@@ -1,4 +1,11 @@
+.appShell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .page {
+  flex: 1 0 auto;
   padding: var(--space-8) 0 var(--space-9);
 }
 
@@ -45,6 +52,56 @@
   margin: 0;
 }
 
+.contactFooter {
+  margin-top: auto;
+  flex-shrink: 0;
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 84%, white);
+  background: color-mix(in oklab, var(--color-bg-soft) 88%, white);
+  padding: var(--space-4) 0 var(--space-6);
+}
+
+.contactFooterInner {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: var(--space-3);
+  text-align: center;
+  padding: 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.45;
+}
+
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.contactSeparator {
+  color: var(--color-border-strong);
+  font-weight: 700;
+}
+
+.contactLink {
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-accent) 56%, white);
+}
+
+.contactLink:hover {
+  color: color-mix(in oklab, var(--color-accent) 80%, var(--color-text));
+}
+
+.contactLink:focus-visible {
+  color: color-mix(in oklab, var(--color-accent) 84%, var(--color-text));
+}
+
 @media (max-width: 1080px) {
   .page {
     padding-top: var(--space-7);
@@ -77,6 +134,28 @@
   .grid {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
+  }
+
+  .contactFooter {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-6);
+  }
+
+  .contactFooterInner {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 520px) {
+  .contactFooterInner {
+    flex-direction: column;
+    white-space: normal;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+
+  .contactSeparator {
+    display: none;
   }
 }
 

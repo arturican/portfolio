@@ -35,20 +35,51 @@ export const App = () => {
     <>
       <MetaTags meta={seoMeta} />
 
-      <main className="page" aria-labelledby="title">
-        <div className="container">
-          <div className="header">
-            <h1 id="title" className="title">
-              @arturican
-            </h1>
-            <p className="subtitle">Welcome to my portfolio. Click any card to view the project.</p>
-          </div>
+      <div className="appShell">
+        <main className="page" aria-labelledby="title">
+          <div className="container">
+            <div className="header">
+              <h1 id="title" className="title">
+                @arturican
+              </h1>
+              <p className="subtitle">
+                Welcome to my portfolio. Click any card to view the project.
+              </p>
+            </div>
 
-          <section className="section" aria-label="Project links">
-            <ProjectsGrid projects={projects} />
-          </section>
-        </div>
-      </main>
+            <section className="section" aria-label="Project links">
+              <ProjectsGrid projects={projects} />
+            </section>
+          </div>
+        </main>
+
+        <footer className="contactFooter" aria-label="Contact links">
+          <div className="container">
+            <p className="contactFooterInner">
+              <span className="contactItem">
+                Email:{" "}
+                <a className="contactLink" href="mailto:arturican@gmail.com">
+                  arturican@gmail.com
+                </a>
+              </span>
+              <span className="contactSeparator" aria-hidden="true">
+                •
+              </span>
+              <span className="contactItem">
+                Telegram:{" "}
+                <a
+                  className="contactLink"
+                  href="https://t.me/m_arturican"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @m_arturican
+                </a>
+              </span>
+            </p>
+          </div>
+        </footer>
+      </div>
     </>
   );
 };
