@@ -23,13 +23,15 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           <span className="cardTitle">{project.title}</span>
           <span className="cardSubtitle">{project.subtitle}</span>
 
-          <div className="cardBadges">
-            {stack.map((tech, index) => (
-              <span className="badge" key={`${project.id}-${tech}-${index}`}>
-                {tech}
-              </span>
-            ))}
-          </div>
+          {stack.length > 0 ? (
+            <div className="cardBadges">
+              {stack.map((tech, index) => (
+                <span className="badge" key={`${project.id}-${tech}-${index}`}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
 

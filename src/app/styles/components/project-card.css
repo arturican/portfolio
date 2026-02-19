@@ -144,7 +144,8 @@
     display: none;
   }
 
-  .cardDisabled .cardCta {
+  .card:hover .cardCta,
+  .card:focus-visible .cardCta {
     display: inline;
   }
 
