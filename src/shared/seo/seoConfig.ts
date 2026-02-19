@@ -1,12 +1,22 @@
 import { projects } from "../../entities/project/model/projects";
 
 export const DEFAULT_SITE_URL = "https://arturican.ru";
+export const DEFAULT_SITE_NAME = "@arturican";
+export const DEFAULT_IMAGE_WIDTH = 1200;
+export const DEFAULT_IMAGE_HEIGHT = 630;
+export const DEFAULT_IMAGE_TYPE = "image/png";
 
 export interface SeoMeta {
   title: string;
   description: string;
   canonicalUrl: string;
   imageUrl: string;
+  imageSecureUrl: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageType: string;
+  siteName: string;
   ogType: "website";
   robots: "index, follow" | "noindex, nofollow";
 }
@@ -115,12 +125,20 @@ const getBaseSeoByPathname = (pathname: string): { seo: BaseSeoMeta; isKnownRout
 export const resolveSeoMeta = (pathname: string, siteUrl?: string): SeoMeta => {
   const normalizedSiteUrl = normalizeSiteUrl(siteUrl);
   const { seo, isKnownRoute } = getBaseSeoByPathname(pathname);
+  const imageUrl = toAbsoluteUrl(normalizedSiteUrl, seo.shareImagePath);
+  const imageAlt = `${seo.title} preview image`;
 
   return {
     title: seo.title,
     description: seo.description,
     canonicalUrl: toAbsoluteUrl(normalizedSiteUrl, seo.canonicalPath),
-    imageUrl: toAbsoluteUrl(normalizedSiteUrl, seo.shareImagePath),
+    imageUrl,
+    imageSecureUrl: imageUrl,
+    imageAlt,
+    imageWidth: DEFAULT_IMAGE_WIDTH,
+    imageHeight: DEFAULT_IMAGE_HEIGHT,
+    imageType: DEFAULT_IMAGE_TYPE,
+    siteName: DEFAULT_SITE_NAME,
     ogType: "website",
     robots: isKnownRoute ? "index, follow" : "noindex, nofollow",
   };

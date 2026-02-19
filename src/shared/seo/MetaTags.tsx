@@ -51,10 +51,17 @@ export const MetaTags = ({ meta }: MetaTagsProps) => {
     setMetaByName("twitter:title", meta.title);
     setMetaByName("twitter:description", meta.description);
     setMetaByName("twitter:image", meta.imageUrl);
+    setMetaByName("twitter:image:alt", meta.imageAlt);
 
     setMetaByProperty("og:title", meta.title);
     setMetaByProperty("og:description", meta.description);
+    setMetaByProperty("og:site_name", meta.siteName);
     setMetaByProperty("og:image", meta.imageUrl);
+    setMetaByProperty("og:image:secure_url", meta.imageSecureUrl);
+    setMetaByProperty("og:image:type", meta.imageType);
+    setMetaByProperty("og:image:width", String(meta.imageWidth));
+    setMetaByProperty("og:image:height", String(meta.imageHeight));
+    setMetaByProperty("og:image:alt", meta.imageAlt);
     setMetaByProperty("og:url", meta.canonicalUrl);
     setMetaByProperty("og:type", meta.ogType);
 

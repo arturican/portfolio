@@ -9,6 +9,11 @@ describe("seoConfig", () => {
     expect(meta.robots).toBe("index, follow");
     expect(meta.canonicalUrl).toBe("https://arturican.ru/projects/todolist");
     expect(meta.imageUrl).toBe("https://arturican.ru/og-default.png");
+    expect(meta.imageSecureUrl).toBe("https://arturican.ru/og-default.png");
+    expect(meta.imageWidth).toBe(1200);
+    expect(meta.imageHeight).toBe(630);
+    expect(meta.imageType).toBe("image/png");
+    expect(meta.siteName).toBe("@arturican");
   });
 
   it("marks unknown routes as noindex", () => {
