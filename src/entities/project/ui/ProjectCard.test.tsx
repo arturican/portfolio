@@ -39,6 +39,7 @@ describe("ProjectCard", () => {
 
     expect(screen.queryByRole("link", { name: /open project:/i })).not.toBeInTheDocument();
     expect(screen.getByLabelText(/coming soon/i)).toBeInTheDocument();
+    expect(screen.queryByLabelText(/open project:/i)).not.toBeInTheDocument();
   });
 
   it("renders a disabled card when URL is invalid", () => {

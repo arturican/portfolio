@@ -1,30 +1,59 @@
 :root {
-  --bg: #e7f0f8;
-  --surface: #ffffff;
-  --surface-2: #f8fbff;
-  --text: #17212b;
-  --muted: #6b7c8d;
-  --border: #d6e3ee;
-  --shadow: 0 14px 40px rgba(23, 33, 43, 0.12);
-  --accent: #229ed9;
+  --color-bg: #ecf3fa;
+  --color-bg-soft: #e5eef8;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f9fcff;
+  --color-surface-tint: #edf5ff;
+  --color-text: #142536;
+  --color-text-muted: #587087;
+  --color-border: #cfdeed;
+  --color-border-strong: #a9c2d7;
+  --color-accent: #0c84d6;
+  --color-accent-soft: #d9ecfb;
+  --color-focus: #168fdf;
+  --color-success-muted: #4f708d;
 
-  --radius: 18px;
-  --gap: 20px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 52px;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 8px 20px rgba(15, 37, 56, 0.08);
+  --shadow-2: 0 14px 30px rgba(15, 37, 56, 0.12);
+  --shadow-3: 0 20px 40px rgba(15, 37, 56, 0.14);
+
+  --font-body:
+    "Segoe UI Variable", "Segoe UI", "SF Pro Text", "Inter", "Noto Sans", "Helvetica Neue", Arial,
+    sans-serif;
+  --font-heading:
+    "Segoe UI Variable", "Segoe UI", "SF Pro Display", "Inter", "Noto Sans", "Helvetica Neue",
+    Arial, sans-serif;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: clamp(26px, 4.4vw, 38px);
+
+  --line-tight: 1.2;
+  --line-copy: 1.55;
+
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+
   --container: 1120px;
-  --font:
-    ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
-    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #e7f0f8;
-    --surface: #ffffff;
-    --surface-2: #f8fbff;
-    --text: #17212b;
-    --muted: #6b7c8d;
-    --border: #d6e3ee;
-    --shadow: 0 14px 40px rgba(23, 33, 43, 0.12);
-    --accent: #229ed9;
-  }
+  --page-gutter: clamp(16px, 3vw, 28px);
 }

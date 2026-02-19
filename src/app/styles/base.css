@@ -9,17 +9,54 @@ body {
   height: 100%;
 }
 
+html {
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: var(--font);
-  color: var(--text);
+  min-height: 100%;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  line-height: var(--line-copy);
   background:
-    radial-gradient(920px 620px at 8% -15%, rgba(34, 158, 217, 0.2), transparent 62%),
-    radial-gradient(760px 560px at 95% 8%, rgba(77, 189, 243, 0.18), transparent 60%), var(--bg);
-  line-height: 1.6;
+    radial-gradient(820px 580px at -12% -18%, rgba(12, 132, 214, 0.13), transparent 58%),
+    radial-gradient(740px 520px at 108% 10%, rgba(61, 168, 235, 0.11), transparent 64%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-soft) 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: inherit;
+  color: var(--color-text);
   text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font-family: var(--font-heading);
+  line-height: var(--line-tight);
+}
+
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--color-focus) 76%, white);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: #03121e;
+  background: color-mix(in oklab, var(--color-accent) 36%, white);
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
 }

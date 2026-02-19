@@ -24,7 +24,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           <span className="cardSubtitle">{project.subtitle}</span>
 
           {stack.length > 0 ? (
-            <div className="cardBadges">
+            <div className="cardBadges" aria-label={`Stack: ${stack.join(", ")}`}>
               {stack.map((tech, index) => (
                 <span className="badge" key={`${project.id}-${tech}-${index}`}>
                   {tech}
@@ -59,7 +59,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       ) : (
         <article
           className="card cardDisabled"
-          aria-label={`Open project: ${project.title} (coming soon)`}
+          aria-label={`Project unavailable: ${project.title} (coming soon)`}
         >
           {cardBody}
         </article>
