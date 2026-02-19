@@ -4,6 +4,8 @@ import { ProjectsGrid } from "../widgets/projects-grid/ProjectsGrid";
 import { MetaTags } from "../shared/seo/MetaTags";
 import { resolveSeoMeta } from "../shared/seo/seoConfig";
 
+const REPOSITORY_URL = "https://github.com/arturican/portfolio/tree/dev";
+
 const getCurrentPathname = (): string => {
   if (typeof window === "undefined") {
     return "/";
@@ -44,6 +46,16 @@ export const App = () => {
               </h1>
               <p className="subtitle">
                 Welcome to my portfolio. Click any card to view the project.
+              </p>
+              <p className="subtitleSource">
+                <a
+                  className="subtitleRepoLink"
+                  href={REPOSITORY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View source on GitHub <span aria-hidden="true">→</span>
+                </a>
               </p>
             </div>
 

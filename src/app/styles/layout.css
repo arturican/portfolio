@@ -35,6 +35,39 @@
   line-height: var(--line-copy);
 }
 
+.subtitleSource {
+  margin-top: var(--space-2);
+}
+
+.subtitleRepoLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: color-mix(in oklab, var(--color-text-muted) 90%, white);
+  opacity: 0.9;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-accent) 44%, white);
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard),
+    text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+
+.subtitleRepoLink:hover {
+  color: color-mix(in oklab, var(--color-accent) 72%, var(--color-text));
+  opacity: 1;
+  text-decoration-color: color-mix(in oklab, var(--color-accent) 64%, white);
+}
+
+.subtitleRepoLink:focus-visible {
+  color: color-mix(in oklab, var(--color-accent) 82%, var(--color-text));
+  opacity: 1;
+  text-decoration-color: color-mix(in oklab, var(--color-accent) 74%, white);
+}
+
 .section {
   margin-top: var(--space-4);
 }
