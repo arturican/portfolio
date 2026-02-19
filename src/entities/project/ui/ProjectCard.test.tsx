@@ -13,6 +13,12 @@ const baseProject: Project = {
   subtitle: "Project subtitle",
   status: "live",
   stack: ["React"],
+  seo: {
+    title: "Live Project | @arturican",
+    description: "Project subtitle",
+    shareImagePath: "/og-default.png",
+    canonicalPath: "/projects/test-project",
+  },
 };
 
 describe("ProjectCard", () => {
