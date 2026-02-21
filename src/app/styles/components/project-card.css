@@ -102,9 +102,20 @@
 .cardSubtitle {
   display: block;
   margin-top: 3px;
-  font-size: 15px;
+  font-size: clamp(13px, 0.4vw + 12px, 15px);
   color: var(--color-text-muted);
-  line-height: 1.4;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+@supports (-webkit-line-clamp: 2) {
+  .cardSubtitle {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
 }
 
 .cardBadges {
@@ -254,6 +265,10 @@
 
   .cardBadges {
     gap: 5px;
+  }
+
+  .cardSubtitle {
+    line-height: 1.5;
   }
 }
 
