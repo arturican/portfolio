@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     id: "todolist",
     title: "Todolist",
-    subtitle: "Todo list app",
+    subtitle: "Tasks with creation date and completion status",
     status: "live",
     url: "https://arturican.ru/todolist",
     stack: ["React", "TypeScript"],
