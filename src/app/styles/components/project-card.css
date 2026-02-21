@@ -105,17 +105,9 @@
   font-size: clamp(13px, 0.4vw + 12px, 15px);
   color: var(--color-text-muted);
   line-height: 1.45;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
   text-wrap: pretty;
-}
-
-@supports (-webkit-line-clamp: 2) {
-  .cardSubtitle {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
 }
 
 .cardBadges {
@@ -177,12 +169,7 @@
 
 @media (hover: hover) {
   .cardCta {
-    opacity: 0;
-  }
-
-  .card:hover .cardCta,
-  .card:focus-visible .cardCta {
-    opacity: 1;
+    display: none;
   }
 
   .card:hover .cardArrow {
@@ -209,8 +196,8 @@
     color: var(--color-text);
   }
 
-  .cardDisabled:hover .cardCta {
-    opacity: 1;
+  .cardDisabled .cardCta {
+    display: inline;
   }
 }
 
