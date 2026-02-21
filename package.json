@@ -4,10 +4,10 @@
   "private": true,
   "description": "Minimal portfolio projects page with React, TypeScript, ESLint and Prettier.",
   "scripts": {
-    "dev": "vite --host --port 4173",
+    "dev": "vite --host --port 4173 --strictPort",
     "start": "npm run dev",
     "build": "vite build",
-    "preview": "vite preview --host --port 4173",
+    "preview": "npm run build && vite preview --host --port 4173 --strictPort",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",

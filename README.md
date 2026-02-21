@@ -88,18 +88,20 @@ pnpm dev
 
 Open: `http://localhost:4173`
 
+If port `4173` is busy, `npm run dev` will fail (strict port mode) instead of silently switching to another port.
+
 ## Scripts
 
-| Command              | Description                            |
-| -------------------- | -------------------------------------- |
-| `npm run dev`        | Start Vite dev server on port `4173`   |
-| `npm run build`      | Type-safe production build             |
-| `npm run preview`    | Preview production build locally       |
-| `npm run typecheck`  | Run TypeScript checks (`tsc --noEmit`) |
-| `npm run lint`       | Run ESLint                             |
-| `npm run format`     | Check formatting via Prettier          |
-| `npm test`           | Run Vitest test suite once             |
-| `npm run test:watch` | Run tests in watch mode                |
+| Command              | Description                                                 |
+| -------------------- | ----------------------------------------------------------- |
+| `npm run dev`        | Start Vite dev server on strict port `4173`                 |
+| `npm run build`      | Type-safe production build                                  |
+| `npm run preview`    | Rebuild and preview production bundle on strict port `4173` |
+| `npm run typecheck`  | Run TypeScript checks (`tsc --noEmit`)                      |
+| `npm run lint`       | Run ESLint                                                  |
+| `npm run format`     | Check formatting via Prettier                               |
+| `npm test`           | Run Vitest test suite once                                  |
+| `npm run test:watch` | Run tests in watch mode                                     |
 
 ## Architecture Overview
 
