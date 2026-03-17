@@ -1,4 +1,5 @@
 import { projects } from "../../entities/project/model/projects";
+import type { Project } from "../../entities/project/model/projects";
 
 export const DEFAULT_SITE_URL = "https://arturican.ru";
 export const DEFAULT_SITE_NAME = "@arturican";
@@ -85,19 +86,29 @@ const toAbsoluteUrl = (siteUrl: string, pathOrUrl: string): string => {
   }
 };
 
+const projectRouteEntries = projects.flatMap((project) => {
+  const routePaths = [project.seo.canonicalPath, ...(project.seo.sharePathAliases ?? [])];
+
+  return routePaths.map((routePath) => [normalizePathname(routePath), project] as const);
+});
+
+const projectByPath = new Map<string, Project>(projectRouteEntries);
+
 const projectSeoByPath = new Map(
-  projects.flatMap((project) => {
-    const baseMeta = {
+  projectRouteEntries.map(([routePath, project]) => [
+    routePath,
+    {
       title: project.seo.title,
       description: project.seo.description,
       canonicalPath: project.seo.canonicalPath,
       shareImagePath: project.seo.shareImagePath,
-    } satisfies BaseSeoMeta;
-    const routePaths = [project.seo.canonicalPath, ...(project.seo.sharePathAliases ?? [])];
-
-    return routePaths.map((routePath) => [normalizePathname(routePath), baseMeta] as const);
-  }),
+    } satisfies BaseSeoMeta,
+  ]),
 );
+
+export const resolveProjectByPathname = (pathname: string): Project | null => {
+  return projectByPath.get(normalizePathname(pathname)) ?? null;
+};
 
 const getBaseSeoByPathname = (pathname: string): { seo: BaseSeoMeta; isKnownRoute: boolean } => {
   const normalizedPathname = normalizePathname(pathname);

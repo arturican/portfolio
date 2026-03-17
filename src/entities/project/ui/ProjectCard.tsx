@@ -3,14 +3,17 @@ import { safeExternalUrl } from "../../../shared/lib/safeExternalUrl";
 
 interface ProjectCardProps {
   project: Project;
+  isFeatured?: boolean;
 }
 
-export const ProjectCard = ({ project }: ProjectCardProps) => {
+export const ProjectCard = ({ project, isFeatured = false }: ProjectCardProps) => {
   const safeUrl = safeExternalUrl(project.url);
   const isClickable = project.status === "live" && safeUrl !== null;
   const icon = project.icon ?? "\u{1F517}";
   const stack = project.stack ?? [];
   const ctaText = isClickable ? "Open project" : "Coming soon";
+  const cardClassName = isFeatured ? "card cardFeatured" : "card";
+  const disabledCardClassName = isFeatured ? "card cardDisabled cardFeatured" : "card cardDisabled";
 
   const cardBody = (
     <div className="cardBody">
@@ -48,7 +51,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
     <li className="item">
       {isClickable ? (
         <a
-          className="card"
+          className={cardClassName}
           href={safeUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -58,7 +61,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         </a>
       ) : (
         <article
-          className="card cardDisabled"
+          className={disabledCardClassName}
           aria-label={`Project unavailable: ${project.title} (coming soon)`}
         >
           {cardBody}

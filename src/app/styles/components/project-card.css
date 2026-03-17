@@ -22,6 +22,16 @@
   opacity: 0.8;
 }
 
+.cardFeatured {
+  border-color: color-mix(in oklab, var(--color-border) 30%, var(--color-accent));
+  box-shadow: var(--shadow-2);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-surface) 92%, white),
+    color-mix(in oklab, var(--color-surface-tint) 64%, white)
+  );
+}
+
 .card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in oklab, var(--color-border) 50%, var(--color-accent));
@@ -40,6 +50,11 @@
   border-color: color-mix(in oklab, var(--color-border) 88%, white);
   box-shadow: var(--shadow-1);
   background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+}
+
+.cardFeatured:hover,
+.cardFeatured:active {
+  border-color: color-mix(in oklab, var(--color-border) 22%, var(--color-accent));
 }
 
 .card:focus-visible {
@@ -86,6 +101,10 @@
   min-width: 0;
   flex: 1 1 auto;
   width: 100%;
+}
+
+.cardFeatured .cardTitle {
+  color: color-mix(in oklab, var(--color-accent) 74%, var(--color-text));
 }
 
 .cardTitle {
@@ -165,6 +184,11 @@
     transform var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
     background var(--duration-fast) var(--ease-standard);
+}
+
+.cardFeatured .cardArrow {
+  border-color: color-mix(in oklab, var(--color-border) 26%, var(--color-accent));
+  background: color-mix(in oklab, var(--color-accent-soft) 60%, white);
 }
 
 @media (hover: hover) {
