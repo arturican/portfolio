@@ -2,6 +2,7 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { loadEnv } from "vite";
 import type { PluginOption } from "vite";
 import { getPrerenderSeoPaths, resolveSeoMeta } from "./src/shared/seo/seoConfig";
 
@@ -31,8 +32,8 @@ const SEO_TAG_PATTERNS: RegExp[] = [
 const escapeHtml = (value: string): string =>
   value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const buildSeoTags = (pathname: string): string => {
-  const meta = resolveSeoMeta(pathname, process.env.VITE_SITE_URL);
+const buildSeoTags = (pathname: string, siteUrl?: string): string => {
+  const meta = resolveSeoMeta(pathname, siteUrl);
 
   return [
     `    <title>${escapeHtml(meta.title)}</title>`,
@@ -58,14 +59,14 @@ const buildSeoTags = (pathname: string): string => {
   ].join("\n");
 };
 
-const injectSeoTags = (html: string, pathname: string): string => {
+const injectSeoTags = (html: string, pathname: string, siteUrl?: string): string => {
   let result = html;
 
   for (const pattern of SEO_TAG_PATTERNS) {
     result = result.replace(pattern, "");
   }
 
-  return result.replace("</head>", `${buildSeoTags(pathname)}\n  </head>`);
+  return result.replace("</head>", `${buildSeoTags(pathname, siteUrl)}\n  </head>`);
 };
 
 const toOutputHtmlPath = (pathname: string): string => {
@@ -78,7 +79,7 @@ const toOutputHtmlPath = (pathname: string): string => {
   return path.join(folderPath, "index.html");
 };
 
-const prerenderSeoRoutes = (): PluginOption => ({
+const prerenderSeoRoutes = (siteUrl?: string): PluginOption => ({
   name: "prerender-seo-routes",
   apply: "build",
   async closeBundle() {
@@ -90,7 +91,7 @@ const prerenderSeoRoutes = (): PluginOption => ({
     await Promise.all(
       routes.map(async (routePath) => {
         const outputHtmlPath = path.join(distDir, toOutputHtmlPath(routePath));
-        const htmlWithSeo = injectSeoTags(baseHtml, routePath);
+        const htmlWithSeo = injectSeoTags(baseHtml, routePath, siteUrl);
 
         await fs.mkdir(path.dirname(outputHtmlPath), { recursive: true });
         await fs.writeFile(outputHtmlPath, htmlWithSeo, "utf-8");
@@ -99,10 +100,14 @@ const prerenderSeoRoutes = (): PluginOption => ({
   },
 });
 
-export default defineConfig({
-  plugins: [react(), prerenderSeoRoutes()],
-  test: {
-    environment: "jsdom",
-    setupFiles: "./src/test/setup.ts",
-  },
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
+    plugins: [react(), prerenderSeoRoutes(env.VITE_SITE_URL)],
+    test: {
+      environment: "jsdom",
+      setupFiles: "./src/test/setup.ts",
+    },
+  };
 });
