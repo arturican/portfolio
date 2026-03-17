@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getPrerenderSeoPaths, resolveSeoMeta } from "./seoConfig";
+import { getPrerenderSeoPaths, resolveProjectByPathname, resolveSeoMeta } from "./seoConfig";
 
 describe("seoConfig", () => {
   it("resolves project seo metadata for known project route", () => {
@@ -29,5 +29,11 @@ describe("seoConfig", () => {
     expect(paths).toContain("/");
     expect(paths).toContain("/projects/todolist");
     expect(paths).toContain("/todolist");
+  });
+
+  it("resolves project data for canonical and alias routes", () => {
+    expect(resolveProjectByPathname("/projects/todolist")?.id).toBe("todolist");
+    expect(resolveProjectByPathname("/todolist/")?.id).toBe("todolist");
+    expect(resolveProjectByPathname("/unknown-route")).toBeNull();
   });
 });
