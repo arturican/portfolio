@@ -54,7 +54,7 @@ export const App = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  View source on GitHub <span aria-hidden="true">→</span>
+                  View source on GitHub <span aria-hidden="true">{"\u2192"}</span>
                 </a>
               </p>
             </div>
@@ -75,7 +75,7 @@ export const App = () => {
                 </a>
               </span>
               <span className="contactSeparator" aria-hidden="true">
-                •
+                {"\u2022"}
               </span>
               <span className="contactItem">
                 Telegram:{" "}
